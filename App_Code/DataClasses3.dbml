@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="UTCS_Base_KS" Class="DataClasses3DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=61.60.92.56;Initial Catalog=UTCS_Base_KS;Persist Security Info=True;User ID=tbkcit" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="UTCS_Base_KSConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ETAG_INFO" Member="ETAG_INFO">
+    <Type Name="ETAG_INFO">
+      <Column Name="etagid" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="locationpath" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="startlocationpoint" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="endlocationpoint" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="roadsection" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="px" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="py" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="roadname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="id" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="DES" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ETAG_RECEIVED_COMMAND" Member="ETAG_RECEIVED_COMMAND">
+    <Type Name="ETAG_RECEIVED_COMMAND">
+      <Column Name="NO" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="DateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="CommandID" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="DeviceID" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="VehicleID" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
+      <Column Name="VehicleNO" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Year" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Month" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Day" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Hour" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Min" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Sec" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Week" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="VehicleIDCycle" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="VehicleNOCycle" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="ErrorCode" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="ParameterNumber" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="SecDif" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="HardwareStatus" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Reset" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="EquipmentNO" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="SubCount" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="SubEquipmentNO" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="EquipmentID" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="CompanyID" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Version" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="CommandSet" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="HardwareCycle" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ETAG_SECTORTAB" Member="ETAG_SECTORTAB">
+    <Type Name="ETAG_SECTORTAB">
+      <Column Name="SECTORID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SECTORNAME" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STARTIC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ENDIC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LENGTH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LANENO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="INTDIR" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="GROUPID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LANELENGTH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MODEL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CMSDESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TRAVELTIME" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CAPACITY" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ETAGTAB" Member="ETAGTAB">
+    <Type Name="ETAGTAB">
+      <Column Name="ETAGID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ETAGNAME" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SECTORID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="GROUPID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="REGIONID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SECTORVOL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SNWIDTH" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WEWIDTH" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DIRECTION" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="OICID" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="GISX" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="GISY" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ETAG_VEHICLE" Member="ETAG_VEHICLE">
+    <Type Name="ETAG_VEHICLE">
+      <Column Name="DEVICEID" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="RECEIVEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="false" />
+      <Column Name="LANEID" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="PLATEID" Type="System.String" DbType="VarChar(24)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

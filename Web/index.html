@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ETAG資料統計分析平台</title>
+
+    <!-- 網站圖示 -->
+    <link rel="icon" href="Code/image/eTagIcon.ico" type="image/ico" />
+
+    <!-- Base -->    
+    <script type="text/javascript" src="Code/Other/jquery.min.js"></script>
+    <script type="text/javascript" src="Code/Other/angular.js"></script>
+    <script type="text/javascript" src="Code/Other/angular-route.js"></script>
+    <script type="text/javascript" src="Code/Other/angular-sanitize.min.js"></script>
+
+    <!-- angular-bootstrap -->
+    <script type="text/javascript" src="Code/Other/ui-bootstrap-tpls-1.3.2.min.js"></script>
+
+    <!-- Bootstrap-AdminTemplate -->
+    <link rel="stylesheet" href="Code/AdminTemplate/css/bootstrap.css" />
+    <link rel="stylesheet" href="Code/AdminTemplate/fonts/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="Code/AdminTemplate/css/animate.min.css" />
+    <link rel="stylesheet" href="Code/AdminTemplate/css/custom.css" />
+    <link rel="stylesheet" href="Code/AdminTemplate/css/select/select2.min.css">
+    <script type="text/javascript" src="Code/AdminTemplate/js/bootstrap.min.js"></script>
+    <script src="Code/AdminTemplate/js/chartjs/chart.min.js"></script>
+    <script src="Code/AdminTemplate/js/select/select2.full.js"></script>
+    <link href="Code/Other/all.css" rel="stylesheet" />
+    <!-- Bootstrap-AdminTemplate -->
+    <script src="Code/Other/highcharts.js"></script>
+    <script src="Code/Other/exporting.js"></script>
+
+    <!--自訂 -->
+    <link rel="stylesheet" href="Code/Custom/Kai.css" />
+    <script type="text/javascript" src="Code/Custom/kai.js"></script>
+    <script type="text/javascript" src="Code/Custom/Kai-ng-ui.js"></script>
+
+    <!-- GoogleMap -->
+    <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places&language=zh-TW&key=AIzaSyBdkZc2FhUUdomCb-kjewPRc-pQ9LFhme8"></script>
+    <script src="Code/Other/ng-map.js"></script>
+
+    <!--google chart-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- datetimepicker -->
+    <link rel="stylesheet" href="Code/Other/bootstrap-datetimepicker.css">
+    <script type="text/javascript" src="Code/Other/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="Code/Other/bootstrap-datetimepicker.zh-TW.js"></script>
+
+    <!-- angular-Controller -->
+    <script src="Controller/index.js"></script>
+    <script src="Controller/home.js"></script>
+    <script src="Controller/oldHome.js"></script>
+    <script src="Controller/baseETagDateSearch.js"></script>
+    <script src="Controller/eTagTimeFlow.js"></script>
+    <script src="Controller/eTagWeekTimeFlow.js"></script>
+    <script src="Controller/eTagTravelTime.js"></script>
+    <script src="Controller/eTagWeekTravelTime.js"></script>
+    <script src="Controller/chart1.js"></script>  
+
+    <!-- angular-Service -->
+    <script src="ngService/filter.js"></script>
+    <script src="ngService/route.js"></script>
+
+</head>
+<body class="nav-md table-responsive" id="indexBody" style="overflow-y:scroll">
+    <div style="min-width:768px;">
+        <div ng-controller="index as index" ng-app="indexApp">
+            <div class="container body">
+                <!-- 左邊選單 -->
+                <div class="main_container">
+                    <div class="col-md-3 left_col">
+                        <div class="left_col scroll-view">
+                            <div class="navbar nav_title" style="border-bottom: 1px solid #303030;">
+                                <a href="#" class="site_title" style="vertical-align: middle; line-height: 50px">
+                                    <span class="font-16px">ETAG資料統計分析平台</span>
+                                </a>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                                <div class="menu_section">
+                                    <ul class="nav side-menu font-14px">
+                                        <li>
+                                            <a href="#/home"><i class="fa fa-dashboard"></i>儀表板</a>
+                                        </li>
+                                        <li>
+                                            <a href="#/oldHome"><i class="fa fa-clipboard" aria-hidden="true"></i>歷史流量查詢</a>
+                                        </li>
+                                        <li>
+                                            <a href="#/baseETagDateSearch"><i class="fa fa-database" aria-hidden="true"></i>原始資料查詢</a>
+                                        </li>
+                                        <li>
+                                            <a><i class="fa fa-file-text-o" aria-hidden="true"></i>統計報表 <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li>
+                                                    <a href="#/eTagTimeFlow">分時流量查詢</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#/eTagWeekTimeFlow">多週內日 - 分時流量查詢</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#/eTagTravelTime">分時旅行時間查詢</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#/eTagWeekTravelTime">多週內日 - 分時旅行時間查詢</a>
+                                                </li>
+                                                <li  style="display:none">
+                                                    <a href="#/eTagAllFlow">總量管制查詢</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a><i class="fa fa-bar-chart" aria-hidden="true"></i>統計圖表 <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu" style="display: none">
+                                                <li>
+                                                    <a href="#/chart1">旅行時間查詢</a>
+                                                </li>
+                                                <li  style="display:none">
+                                                    <a href="#/caseList/CaseListAll">單日查詢</a>
+                                                </li>
+                                                <li  style="display:none">
+                                                    <a href="#/caseList/My">多日查詢</a>
+                                                </li>
+                                                <li  style="display:none">
+                                                    <a href="#/caseList/1">旅行時間查詢</a>
+                                                </li>
+                                                <li  style="display:none">
+                                                    <a href="#/caseList/2">總量管制查詢</a>
+                                                </li>
+                                            </ul>
+                                        </li>                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 右上 -->
+                    <div class="top_nav">
+                        <div class="nav_menu">
+                            <nav class="" role="navigation">
+                                <div class="nav toggle">
+                                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                                </div>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="">
+                                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa fa-user"></i>　
+                                            <span class="fa fa-angle-down"></span>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                            <li style="display:none;">
+                                                <a href="" ng-click="index.editMy('edit')">  修改基本資料</a>
+                                            </li>
+                                            <li>
+                                                <a href="" ng-click="index.logout()"><i class="fa fa-sign-out pull-right"></i> 登出</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- 右邊內容 -->
+                    <div class="right_col" role="main">
+                        <div ng-view></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="editMyAD" tabindex="-1" style="position:absolute;" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">修改基本資料</h4>
+                        </div>
+                        <div class="modal-body" style="padding:25px;padding-top:10px">
+                            <div class="row">
+                                <form name="editMyAD">
+                                    <div class="col-lg-12" style="margin-bottom:10px;">
+                                        <span class="font-16px">姓名</span>
+                                    </div>
+                                    <div ng-class="{'has-error':!editMyAD.$valid}">
+                                        <input type="text" maxlength="20" class="kai-formText38 form-control col-md-7 col-xs-12" id="editMyADName" ng-model="rootBase.edit.Name" style="margin-bottom:10px;" required>
+                                    </div>
+                                    <div class="col-lg-12" style="margin-bottom:10px;">
+                                        <span class="font-16px">新的密碼</span>
+                                    </div>
+                                    <input type="password" style="margin-bottom:10px;" maxlength="20" class="kai-formText38 form-control col-md-7 col-xs-12" id="editMyADPassword" ng-model="rootBase.edit.Password" placeholder="空白為不更改">
+                                    <div class="col-lg-12" style="margin-bottom:10px;">
+                                        <span class="font-16px">新的密碼確認</span><spna style="color:red;line-height:16px;vertical-align:middle;" ng-show="rootBase.edit.Password !=rootBase.edit.Password2">　　密碼不一致</spna>
+                                    </div>
+                                    <div ng-class="{'has-error':rootBase.edit.Password !=rootBase.edit.Password2}">
+                                        <input type="password" maxlength="20" class="kai-formText38 form-control col-md-7 col-xs-12" id="editMyADPassword" ng-model="rootBase.edit.Password2" placeholder="空白為不更改">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <button type="button" style="width:100%;" ng-disabled="!editMyAD.$valid || rootBase.edit.Password !=rootBase.edit.Password2" class="btn btn-primary" ng-click="rootBase.editMy('ok')">確定</button>
+                                </div>
+                                <div class="col-xs-6">
+                                    <button type="button" style="width:100%;" class="btn btn-default" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var URL = window.location,
+    $BODY = $('body'),
+    $MENU_TOGGLE = $('#menu_toggle'),
+    $SIDEBAR_MENU = $('#sidebar-menu'),
+    $SIDEBAR_FOOTER = $('.sidebar-footer'),
+    $LEFT_COL = $('.left_col'),
+    $RIGHT_COL = $('.right_col'),
+    $NAV_MENU = $('.nav_menu'),
+    $FOOTER = $('footer');
+    $(function () {
+        var setContentHeight = function () {
+
+            $RIGHT_COL.css('min-height', $(window).height());
+            var bodyHeight = $BODY.height(),
+                leftColHeight = $LEFT_COL.eq(1).height() + $SIDEBAR_FOOTER.height(),
+                contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight;
+            contentHeight -= $NAV_MENU.height() + $FOOTER.height();
+            if (contentHeight < 800) {
+                $RIGHT_COL.css('min-height', contentHeight + 55);
+            }
+        };
+        $SIDEBAR_MENU.find('a').on('click', function (ev) {
+            var $li = $(this).parent();
+            if ($BODY.hasClass('nav-sm')) {
+                $(".side-menu li").removeClass('active-sm');
+                if ($li.parent().is('.child_menu')) {
+                    $li.parent().css("display", "none");
+                    $li.parent().parent().removeClass('active');
+                    $li.parent().parent().addClass('active-sm');
+                }
+
+            }
+
+            if ($li.is('.active')) {
+                if ($li.find('ul').length > 0) {
+                    if ($li.parent().is('.side-menu')) {
+                        $li.removeClass('active');
+                    }
+                }
+                $('ul:first', $li).slideUp(function () {
+                    setContentHeight();
+                });
+            } else {
+                // prevent closing menu if we are on child menu
+                if (!$li.parent().is('.child_menu')) {
+                    $SIDEBAR_MENU.find('li').removeClass('active');
+                    $SIDEBAR_MENU.find('li ul').slideUp();
+                }
+                if ($li.parent().is('.side-menu')) {
+                    $(".side-menu li").removeClass('active');
+                    $li.addClass('active');
+                }
+                if ($li.parent().is('.child_menu')) {
+                    $(".child_menu li").removeClass('current-page');
+                    $li.addClass('current-page');
+                }
+                $('ul:first', $li).slideDown(function () {
+                    setContentHeight();
+                });
+            }
+        });
+
+        $MENU_TOGGLE.on('click', function () {
+            if ($BODY.hasClass('nav-md')) {
+                $BODY.removeClass('nav-md').addClass('nav-sm');
+                $LEFT_COL.removeClass('scroll-view').removeAttr('style');
+                if ($SIDEBAR_MENU.find('li').hasClass('active')) {
+                    $SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
+                    $SIDEBAR_MENU.find('li.active-sm ul').css("display", "none");
+                }
+            } else {
+                $BODY.removeClass('nav-sm').addClass('nav-md');
+                if ($SIDEBAR_MENU.find('li').hasClass('active-sm')) {
+                    $SIDEBAR_MENU.find('li.active-sm ul').css("display", "block");
+                    $SIDEBAR_MENU.find('li.active-sm').addClass('active').removeClass('active-sm');
+                }
+            }
+            setContentHeight();
+        });
+
+        var aaa = $SIDEBAR_MENU.find('a[href="' + URL.hash + '"]');
+        if (($SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').parent().is('.side-menu'))) {
+            $SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').addClass('active');
+        } else {
+            $SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').addClass('current-page');
+        }
+        $SIDEBAR_MENU.find('a').filter(function () {
+            return this.href == URL;
+        }).parent('li').addClass('current-page').parents('ul').slideDown(function () {
+            setContentHeight();
+        }).parent().addClass('active');
+
+        if (($SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').parent().is('.side-menu'))) {
+            $SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').removeClass('current-page');
+            $SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').addClass('active');
+        } else {
+            $SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').addClass('current-page');
+        }
+        setContentHeight();
+    });
+
+    function reMenu() {
+        $('li').removeClass('active');
+        var setContentHeight = function () {
+            $RIGHT_COL.css('min-height', $(window).height());
+            var bodyHeight = $BODY.height(),
+                leftColHeight = $LEFT_COL.eq(1).height() + $SIDEBAR_FOOTER.height(),
+                contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight;
+
+
+            contentHeight -= $NAV_MENU.height() + $FOOTER.height();
+            if (contentHeight < 800) {
+                $RIGHT_COL.css('min-height', contentHeight + 55);
+            }
+        };
+
+        var aaa = $SIDEBAR_MENU.find('a[href="' + URL.hash + '"]');
+        if (($SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').parent().is('.side-menu'))) {
+            $SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').addClass('active');
+        } else {
+            $SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').addClass('current-page');
+        }
+        $SIDEBAR_MENU.find('a').filter(function () {
+            return this.href == URL;
+        }).parent('li').addClass('current-page').parents('ul').slideDown(function () {
+            setContentHeight();
+        }).parent().addClass('active');
+
+        if (($SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').parent().is('.side-menu'))) {
+            $SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').removeClass('current-page');
+            $SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').addClass('active');
+        } else {
+            $SIDEBAR_MENU.find('a[href="' + URL.hash + '"]').parent('li').addClass('current-page');
+        }
+        setContentHeight();
+    }
+</script>

@@ -1,0 +1,182 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="x_panel kai-topLine-primary" style="border-bottom-left-radius:0;border-bottom-right-radius:0">
+            <div class="x_content font-18px">
+                <div style="float:left;">
+                    <h3>
+                        分時流量查詢　　　
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-lg-4">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2><i class="fa fa-clock-o"></i>　搜尋項目</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content font-14px">
+                <div class="col-xs-12">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        <input type="text" id="searchStartDate" style="background-color:white;" ng-model="eTagTimeFlow.search.startDate" ng-click="eTagTimeFlow.dateClick()" class="form-control kai-height38 kai-hand" readonly="readonly">
+                    </div>
+                    <script>
+                        $('#searchStartDate').datetimepicker({
+                            autoclose: true,
+                            todayHighlight: true,
+                            format: 'yyy-mm-dd',
+                            minView: 2,
+                            language: "zh-TW"
+                        });
+                    </script>
+                </div>
+                <span class="col-xs-12 font-16px" style="margin-top:20px;margin-bottom:10px;height:40px;">
+                    選擇設備：{{eTagTimeFlow.chooseETag}}
+                </span>
+                <div>
+                    <div class="col-lg-4 kai-hand" ng-repeat="mapMakers in eTagTimeFlow.mapMakers"
+                         style="margin-bottom:5px;"
+                         ng-mouseover="eTagTimeFlow.eTagCheckBoxMouseover(mapMakers)"
+                         ng-mouseleave="eTagTimeFlow.eTagCheckBoxMouseleave(mapMakers)"
+                         ng-click="eTagTimeFlow.eTagCheckBoxClick(mapMakers)">
+                        <div ng-class="{'icheckbox_square-blue checked':mapMakers.choose,
+                             'icheckbox_square-blue':!mapMakers.choose,
+                             'icheckbox_square-blue hover':!mapMakers.choose && eTagTimeFlow.chooseETag==mapMakers.title
+                             }"></div>
+                        {{mapMakers.id}}
+                    </div>
+                </div>
+                <div class="col-xs-12" style="margin-top:20px;">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button type="button" ng-click="eTagTimeFlow.getETagBaseDate()" ng-disabled="eTagTimeFlow.searchBtnFlag" class="btn btn-primary" style="width:100%;">
+                                搜尋
+                            </button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="button" ng-click="eTagTimeFlow.reset()" class="btn btn-default" style="width:100%;">
+                                重置
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-lg-8">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    <i class="fa fa-clock-o"></i>
+                    <span ng-click="eTagTimeFlow.chooseTabs = '資料表格';
+                          eTagTimeFlow.mapStyle={position: 'absolute',top:'-9999px'};
+                          eTagTimeFlow.chooseTabsFlag=true;"
+                          ng-class="{'kai-blue':eTagTimeFlow.chooseTabs == '資料表格'}"
+                          class="kai-hand">
+                        資料表格
+                    </span>
+                    <span> │ </span>
+                    <span ng-click="eTagTimeFlow.chooseTabs = 'eTag位置圖';
+                          eTagTimeFlow.mapStyle={};
+                          eTagTimeFlow.chooseTabsFlag=false;"
+                          ng-class="{'kai-blue':eTagTimeFlow.chooseTabs == 'eTag位置圖'}"
+                          class="kai-hand">
+                        eTag位置圖
+                    </span>
+                    <span ng-hide="eTagTimeFlow.eTagTimeFlowBaseData.length==0"> │ </span>
+                    <a href="Excel\分時流量報表.xlsx" style="color:black;" ng-hide="eTagTimeFlow.eTagTimeFlowBaseData.length==0">
+                        匯出成Excel
+                    </a>
+                </h2>
+                <div class="nav navbar-right panel_toolbox" ng-hide="eTagTimeFlow.eTagTimeFlowBaseData.length==0">
+                    選擇eTag：
+                    <select ng-model="eTagTimeFlow.nowListSelect" ng-change="eTagTimeFlow.eTagListClick()">
+                        <option ng-repeat="eTagList in eTagTimeFlow.eTagList" value="{{eTagList}}">
+                            {{eTagList.split('ID')[1]}}
+                        </option>
+                    </select>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content font-14px" style="height:555px;" ng-style="eTagTimeFlow.mapStyle">
+                <ng-map zoom="{{eTagTimeFlow.mapZoom}}"
+                        center="{{eTagTimeFlow.mapCenter}}"
+                        on-zoom_changed="eTagTimeFlow.mapChange()"
+                        on-center_changed="eTagTimeFlow.mapChange()"
+                        map-type-control="true"
+                        map-type-control-options="{style:'HORIZONTAL_BAR', position:'TOP_RIGHT'}"
+                        style="height: 100%;">
+                    <marker ng-repeat="mapMakers in eTagTimeFlow.mapMakers"
+                            position="{{mapMakers.py}},{{mapMakers.px}}"
+                            on-click="eTagTimeFlow.eTagMarkerClick(mapMakers)"
+                            id="{{mapMakers.id}}">
+                    </marker>
+                </ng-map>
+            </div>
+            <div class="x_content font-14px" ng-show="eTagTimeFlow.chooseTabs == '資料表格'">
+                <div class="table-responsive" style="overflow-y:hidden;">
+                    <div style="height:440px;font-size:30px;display:none;" class="showLoader">
+                        <div class="loadersr"></div>
+                        <div class="loadword">讀取中...</div>
+                    </div>
+                    <div style="min-width:630px;" class="showETagData">
+                        <div ng-show="eTagTimeFlow.eTagTimeFlowData.length==0" style="height:50px;">
+                            沒有資料，請選擇條件後搜尋
+                        </div>
+                        <div ng-hide="eTagTimeFlow.eTagTimeFlowData.length==0">
+                            <table class="table table-striped table-bordered table-hover font-16px" id="basETegTable">
+                                <thead>
+                                    <tr>
+                                        <th colspan="6" style="text-align:center;">單日eTag - 分時流量報表</th>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align:center;">日期</th>
+                                        <th colspan="5" style="text-align:center;">{{eTagTimeFlow.eTagBaseInfo.date}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align:center;">設備編號、名稱</th>
+                                        <th colspan="5" style="text-align:center;">({{eTagTimeFlow.eTagBaseInfo.ID}}){{eTagTimeFlow.eTagBaseInfo.RoadName}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align:center;">時間</th>
+                                        <th style="text-align:center;">總流量</th>
+                                        <th style="text-align:center;">聯結車流量</th>
+                                        <th style="text-align:center;">大型車流量</th>
+                                        <th style="text-align:center;">小型車流量</th>
+                                        <th style="text-align:center;">其他車流量</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="eTagTimeFlowData in eTagTimeFlow.eTagTimeFlowData">
+                                        <td style="text-align:center;">{{eTagTimeFlowData.Hour}}</td>
+                                        <td style="text-align:right;">{{eTagTimeFlowData.AllNums}}</td>
+                                        <td style="text-align:right;">{{eTagTimeFlowData.SBigCarNums}}</td>
+                                        <td style="text-align:right;">{{eTagTimeFlowData.BigCarNums}}</td>
+                                        <td style="text-align:right;">{{eTagTimeFlowData.SmallCarNums}}</td>
+                                        <td style="text-align:right;">{{eTagTimeFlowData.OtherCarNums}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3" style="text-align:center;vertical-align:middle;">附註：</td>
+                                        <td style="text-align:center;">1</td>
+                                        <td colspan="4" style="text-align:left;">晨峰：早上7-9點數值之平均值</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">2</td>
+                                        <td colspan="4" style="text-align:left;">昏峰：早上17-19點數值之平均值</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">3</td>
+                                        <td colspan="4" style="text-align:left;">離峰：早上9-17點數值之平均值</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

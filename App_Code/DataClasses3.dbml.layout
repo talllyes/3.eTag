@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.375" name="DataClasses3">
+  <DataContextMoniker Name="/DataClasses3DataContext" />
+  <nestedChildShapes>
+    <classShape Id="4393afab-d81c-48dd-899f-f408181ae7d8" absoluteBounds="0.75, 0.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/DataClasses3DataContext/ETAG_INFO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eb6f2bd8-c6c8-49dc-b641-914b7968cdbe" absoluteBounds="0.765, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5090f73c-e0c0-4d07-8a36-726d331c58ce" absoluteBounds="0.75, 3.75, 2, 6.3861311848958326">
+      <DataClassMoniker Name="/DataClasses3DataContext/ETAG_RECEIVED_COMMAND" />
+      <nestedChildShapes>
+        <elementListCompartment Id="74e87a33-6ca8-442b-b3a0-760e92ff4cca" absoluteBounds="0.76500000000000012, 4.21, 1.9700000000000002, 5.826131184895833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f41f3818-87e7-4ffd-aa1f-000bb747b0da" absoluteBounds="5.625, 0.75, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/DataClasses3DataContext/ETAG_SECTORTAB" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4aee0055-08fa-4f4d-bc27-115b75532137" absoluteBounds="5.64, 1.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e21fab65-81a4-4187-981a-4841188af82c" absoluteBounds="3.25, 2.5, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/DataClasses3DataContext/ETAGTAB" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bfc00357-106b-4e6c-8444-0bacf0f3894b" absoluteBounds="3.2649999999999997, 2.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a18dffb0-5c72-465f-8135-2355c0abbedd" absoluteBounds="3.25, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataClasses3DataContext/ETAG_VEHICLE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="67a14dfb-882a-4a9d-8706-33be4e330d76" absoluteBounds="3.2649999999999997, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

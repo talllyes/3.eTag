@@ -1,0 +1,206 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="x_panel kai-topLine-primary" style="border-bottom-left-radius:0;border-bottom-right-radius:0">
+            <div class="x_content font-18px">
+                <div style="float:left;">
+                    <h3>
+                        多週內日 - 分時流量查詢　　　
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-lg-4">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    <i class="fa fa-clock-o"></i>
+                    <span ng-click="eTagWeekTimeFlow.chooseSearchTabs='搜尋項目'"
+                          ng-class="{'kai-blue':eTagWeekTimeFlow.chooseSearchTabs=='搜尋項目'}"
+                          class="kai-hand">
+                        搜尋項目
+                    </span>
+                    <span> │ </span>
+                    <span ng-click="eTagWeekTimeFlow.chooseSearchTabs='排除日期'"
+                          ng-class="{'kai-blue':eTagWeekTimeFlow.chooseSearchTabs=='排除日期'}"
+                          class="kai-hand">
+                        排除日期
+                    </span>
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content font-14px" ng-show="eTagWeekTimeFlow.chooseSearchTabs=='搜尋項目'">
+                <span class="col-xs-12 font-16px" style="height:25px;">
+                    開始日期：
+                </span>
+                <div class="col-xs-12">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        <input type="text" id="searchStartDate" style="background-color:white;" ng-model="eTagWeekTimeFlow.search.startDate" ng-click="eTagWeekTimeFlow.dateClick(searchStartDate)" class="form-control kai-height38 kai-hand" readonly="readonly">
+                    </div>
+                    <script>
+                        $('#searchStartDate').datetimepicker({
+                            autoclose: true,
+                            todayHighlight: true,
+                            format: 'yyy-mm-dd',
+                            minView: 2,
+                            language: "zh-TW"
+                        });
+                    </script>
+                </div>
+                <span class="col-xs-12 font-16px" style="height:25px;">
+                    結束日期：
+                </span>
+                <div class="col-xs-12">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        <input type="text" id="searchEndDate" style="background-color:white;" ng-model="eTagWeekTimeFlow.search.endDate" ng-click="eTagWeekTimeFlow.dateClick(searchEndDate)" class="form-control kai-height38 kai-hand" readonly="readonly">
+                    </div>
+                    <script>
+                        $('#searchEndDate').datetimepicker({
+                            autoclose: true,
+                            todayHighlight: true,
+                            format: 'yyy-mm-dd',
+                            minView: 2,
+                            language: "zh-TW"
+                        });
+                    </script>
+                </div>
+                <span class="col-xs-12 font-16px" style="margin-top:20px;margin-bottom:10px;height:40px;">
+                    選擇設備：{{eTagWeekTimeFlow.chooseETag}}
+                </span>
+                <div>
+                    <div class="col-lg-4 kai-hand" ng-repeat="mapMakers in eTagWeekTimeFlow.mapMakers"
+                         style="margin-bottom:5px;"
+                         ng-mouseover="eTagWeekTimeFlow.eTagCheckBoxMouseover(mapMakers)"
+                         ng-mouseleave="eTagWeekTimeFlow.eTagCheckBoxMouseleave(mapMakers)"
+                         ng-click="eTagWeekTimeFlow.eTagCheckBoxClick(mapMakers)">
+                        <div ng-class="{'icheckbox_square-blue checked':mapMakers.choose,
+                             'icheckbox_square-blue':!mapMakers.choose,
+                             'icheckbox_square-blue hover':!mapMakers.choose && eTagWeekTimeFlow.chooseETag==mapMakers.title
+                             }"></div>
+                        {{mapMakers.id}}
+                    </div>
+                </div>
+            </div>
+            <div class="x_content font-14px" ng-show="eTagWeekTimeFlow.chooseSearchTabs=='排除日期'">
+                <div class="col-xs-12">
+                    <div style="width:220px;margin:0 auto;">
+                        <div id="notSearchDate"></div>
+                    </div>
+                    <script>
+                        $("#notSearchDate").datetimepicker({
+                            todayHighlight: false,
+                            format: 'yyy-mm-dd',
+                            minView: 2,
+                            language: "zh-TW"
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="col-xs-12" style="margin-top:20px;">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <button type="button" ng-click="eTagWeekTimeFlow.createReport()" ng-disabled="eTagWeekTimeFlow.searchBtnFlag" class="btn btn-primary" style="width:100%;">
+                            {{eTagWeekTimeFlow.buttonText}}
+                        </button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button type="button" ng-click="eTagWeekTimeFlow.reset()" class="btn btn-default" style="width:100%;">
+                            重置
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-lg-8">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    <i class="fa fa-clock-o"></i>
+                    <span ng-click="eTagWeekTimeFlow.chooseTabs = '報表清單';
+                          eTagWeekTimeFlow.mapStyle={position: 'absolute',top:'-9999px'};
+                          eTagWeekTimeFlow.chooseTabsFlag=true;"
+                          ng-class="{'kai-blue':eTagWeekTimeFlow.chooseTabs == '報表清單'}"
+                          class="kai-hand">
+                        報表清單
+                    </span>
+                    <span> │ </span>
+                    <span ng-click="eTagWeekTimeFlow.chooseTabs = 'eTag位置圖';
+                          eTagWeekTimeFlow.mapStyle={};
+                          eTagWeekTimeFlow.chooseTabsFlag=false;"
+                          ng-class="{'kai-blue':eTagWeekTimeFlow.chooseTabs == 'eTag位置圖'}"
+                          class="kai-hand">
+                        eTag位置圖
+                    </span>
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content font-14px" style="height:555px;" ng-style="eTagWeekTimeFlow.mapStyle">
+                <ng-map zoom="{{eTagWeekTimeFlow.mapZoom}}"
+                        center="{{eTagWeekTimeFlow.mapCenter}}"
+                        on-zoom_changed="eTagWeekTimeFlow.mapChange()"
+                        on-center_changed="eTagWeekTimeFlow.mapChange()"
+                        map-type-control="true"
+                        map-type-control-options="{style:'HORIZONTAL_BAR', position:'TOP_RIGHT'}"
+                        style="height: 100%;">
+                    <marker ng-repeat="mapMakers in eTagWeekTimeFlow.mapMakers"
+                            position="{{mapMakers.py}},{{mapMakers.px}}"
+                            on-click="eTagWeekTimeFlow.eTagMarkerClick(mapMakers)"
+                            id="{{mapMakers.id}}">
+                    </marker>
+                </ng-map>
+            </div>
+            <div class="x_content font-14px" style="min-height:546px;" ng-show="eTagWeekTimeFlow.chooseTabs == '報表清單'">
+                <div style="height:440px;font-size:30px;" class="showLoader">
+                    <div class="loadersr"></div>
+                    <div class="loadword">讀取中...</div>
+                </div>
+                <div class="table-responsive" style="overflow-y:hidden;">
+                    <div style="min-width:630px;display:none;opacity:0" class="showETagData">
+                        <table class="table table-striped table-bordered table-hover font-16px">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;width:163px;">程式開始時間</th>
+                                    <th style="text-align:center;width:163px;">程式結束時間</th>
+                                    <th style="text-align:center;width:113px;">報表開始時間</th>
+                                    <th style="text-align:center;width:113px;">報表結束時間</th>
+                                    <th style="text-align:center;">選擇ETag編號</th>
+                                    <th style="text-align:center;width:81px;">報表下載</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="nowList in eTagWeekTimeFlow.myPage.nowList">
+                                    <td style="text-align:center;">{{nowList.CreateDate}}</td>
+                                    <td style="text-align:center;">{{nowList.EndDate}}</td>
+                                    <td style="text-align:center;">{{nowList.ReportStartDate}}</td>
+                                    <td style="text-align:center;">{{nowList.ReportEndDate}}</td>
+                                    <td style="text-align:center;">{{nowList.Name}}</td>
+                                    <td style="text-align:center;">
+                                        <span ng-show="nowList.Context==null">處理中</span>
+                                        <a ng-show="nowList.Context!=null" href="api/GetETagWeekTimeFlowExcel/週內日分時流量資料?id={{nowList.ReportID}}">下載</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div style="width:100%;text-align:center;min-height:47px;display:none;opacity:0" class="showETagData" ng-show="eTagWeekTimeFlow.myPage.pageShow">
+                    <uib-pagination total-items="eTagWeekTimeFlow.myPage.totalItems.length"
+                                    ng-model="eTagWeekTimeFlow.myPage.currentPage"
+                                    items-per-page="eTagWeekTimeFlow.myPage.itemsPerPage"
+                                    max-size="eTagWeekTimeFlow.myPage.maxSize"
+                                    class="pagination-lg"
+                                    boundary-links="true"
+                                    previous-text="上一頁"
+                                    next-text="下一頁"
+                                    first-text="<<"
+                                    last-text=">>">
+                    </uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

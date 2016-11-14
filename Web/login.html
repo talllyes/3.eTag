@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>ETAG資料統計分析平台</title>
+    <!-- 網站圖示 -->
+    <link rel="icon" href="../Code/image/eTagIcon.ico" type="image/ico" />
+    <script type="text/javascript" src="Code/Other/jquery.min.js"></script>
+    <script type="text/javascript" src="Code/AdminTemplate/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="Code/AdminTemplate/css/bootstrap.css" />
+    <link rel="stylesheet" href="Code/AdminTemplate/fonts/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="Code/AdminTemplate/css/custom.css" />
+    <link rel="stylesheet" href="Code/AdminTemplate/css/icheck/flat/green.css">
+    <link href="Code/Custom/Kai.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000 url('Code/image/bg1.jpg') center center fixed no-repeat;
+            -moz-background-size: cover;
+            background-size: cover;
+        }
+
+        #submit:hover {
+            background-color: #FF6363 !important;
+        }
+    </style>
+</head>
+<body onkeydown='enterDown()' class="table-responsive" style="overflow-y:hidden;">
+    <div style="padding-bottom: 100px;">
+        <div style="width:400px;margin:0 auto;margin-top:100px;">
+            <div style="background-color:black;opacity:0.65;height:200px;margin:0;text-align:center;" id="topMess">
+                <span style="font-size:20px;line-height:50px;vertical-align:middle;color:white;">ETAG資料統計分析平台</span>
+                <div style="padding:20px;padding-bottom:0;padding-top:0;">
+                    <div class="kai-hr"></div>
+                </div>
+                <div style="padding:20px;padding-bottom:0;">
+                    <div class="form-group has-feedback">
+                        <input type="text" id="eTagID" style="font-size:16px" placeholder="帳號" onkeydown="inputText()" class="form-control has-feedback-left kai-height38">
+                        <span class="fa fa-user form-control-feedback left" style="color:black;left:2px;font-size:16px" aria-hidden="true"></span>
+                    </div>
+                </div>
+                <div style="padding:20px;padding-bottom:0;">
+                    <div class="form-group has-feedback">
+                        <input type="password" style="font-size:16px" placeholder="密碼" onkeydown="inputText()" id="eTagPassword" class="form-control has-feedback-left kai-height38">
+                        <span class="fa fa-cog form-control-feedback left" style="color:black;left:2px;font-size:16px" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
+            <div onclick="login()" style="height:50px;background-color:#FF8282	;text-align:center;margin:0;" class="kai-hand" id="submit">
+                <span style="font-size:20px;line-height:50px;vertical-align:middle;color:white;" id="submitText">登入</span>
+            </div>
+        </div>
+    </div>
+    <div style="height: 80px;position:absolute;bottom:0px;width:100%;margin:0 auto;text-align:center;color:black;background-color:black;opacity:0.75;color:white;padding:5px;">
+        <span style="font-family:微軟正黑體;font-size: 28px;color:white;"><i class="fa fa-institution"></i> 智慧運輸中心</span>
+        <p>高雄市政府交通局 © 2016 All Rights Reserved</p>
+    </div>
+</body>
+</html>
+<script>
+    function inputText() {
+        $('#submitText').text('登入');
+    }
+    function login() {
+        $('#submitText').text('登入中');
+        $("#submitText").attr("disabled", true);
+        $.ajax({
+            url: 'api/login/login',
+            type: 'POST',
+            data: {
+                id: $('#eTagID').val(),
+                password: $('#eTagPassword').val(),
+            },
+            success: function (data) {
+                if (data == "ok") {
+                    document.location.href = "index";
+                } else {
+                    $('#submitText').text('帳號密碼錯誤 - 請重新輸入');
+                    $("#submitText").attr("disabled", false);
+                }
+            }
+        });
+    }
+    function enterDown() {
+        if ($('#eTagPassword').val() != "" && $('#eTagPassword').val() != "") {
+            if (event.keyCode == 13) {
+                login();
+            }
+        }
+    }
+</script>

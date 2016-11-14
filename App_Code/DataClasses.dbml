@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ETagITC" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=192.168.2.4;Initial Catalog=ETagITC;User ID=talll" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ETagITCConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Report" Member="Report">
+    <Type Name="Report">
+      <Column Name="ReportID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Context" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ReportStartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ReportEndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

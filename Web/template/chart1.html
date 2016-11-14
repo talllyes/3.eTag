@@ -1,0 +1,36 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="x_panel">
+            <div class="x_content font-14px">
+                日期：<input id="homeDate" type="text" ng-model="chart1.homeDate" class="kai-hand" ng-change="chart1.getHome()" ng-disabled="chart1.dateDis" readonly/>
+                <script>
+                    $('#homeDate').datetimepicker({
+                        autoclose: true,
+                        todayHighlight: true,
+                        format: 'yyy-mm-dd',
+                        minView: 2,
+                        language: "zh-TW"
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    <i class="fa fa-clock-o"></i>　哈馬星地區 - 旅行時間和流量統計圖表
+                    <span>　　</span>
+                    <span ng-click="chart1.chooseChart('1')" class="kai-hand" ng-class="{'kai-blue':chart1.chart1Flag=='1'}">累積流量</span>│
+                    <span ng-click="chart1.chooseChart('2')" class="kai-hand" ng-class="{'kai-blue':chart1.chart1Flag=='2'}">分時流量</span>
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div style="height:500px;font-size:30px;" class="showLoader">
+                <div class="loadersr" style="top:250px;"></div>
+                <div class="loadword" style="top:330px;">讀取中...</div>
+            </div>
+            <div id="middleChart" class="hideLoader" style="width: 100%; height: 500px; margin: 0 auto;display:none;"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,376 @@
+﻿.kai-form-group {
+    display: -webkit-flex !important;
+    display: flex !important;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+body {
+    font-family: 微軟正黑體 !important;
+}
+
+
+.kai-table-n {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+
+@font-face {
+    font-family: 'MyWebFont';
+    src: url('webfont.eot'); /* IE9 Compat Modes */
+    src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('webfont.woff2') format('woff2'), /* Super Modern Browsers */
+    url('webfont.woff') format('woff'), /* Pretty Modern Browsers */
+    url('webfont.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+.kai-margin0 {
+    margin: 0 !important;
+}
+
+
+.table-pad-10px {
+    padding: 10px;
+}
+
+.kai-blue {
+    color: #7878FF !important;
+}
+
+.kai-gnn {
+    color: #6E6E6E !important;
+}
+
+.kai-ribbon {
+    padding-right: 55px !important;
+}
+
+.kai-bg {
+    background-image: url('/kCustom/image/bg.png') !important;
+}
+
+.kai-display {
+    display: none !important;
+}
+
+.kai-height38 {
+    height: 38px !important;
+    line-height: 38px !important;
+    vertical-align: middle !important;
+}
+
+.kai-formLabel38 {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    height: 38px !important;
+    line-height: 38px !important;
+    vertical-align: middle !important;
+}
+
+
+.kai-formText38 {
+    height: 38px !important;
+    line-height: 38px !important;
+    vertical-align: middle !important;
+    font-size: 18px !important;
+    color: #8C8C8C !important;
+}
+
+.kai-form-area {
+    font-size: 18px !important;
+    color: #8C8C8C !important;
+}
+
+.kai-show {
+    visibility: visible !important;
+}
+
+.kai-addUserSpan {
+    height: 34px !important;
+    line-height: 34px;
+    vertical-align: middle;
+}
+
+.kai-textOver {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tooltip-arrow {
+    border-top-color: red !important;
+}
+
+.tooltip-inner {
+    background-color: red !important;
+    color: white !important;
+}
+
+.kai-red {
+    color: red !important;
+}
+
+.kai-green {
+    color: green !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.float-left {
+    float: left;
+}
+
+.line28 {
+    line-height: 28px !important;
+    vertical-align: middle !important;
+}
+
+
+.font-18px {
+    font-size: 18px !important;
+    line-height: 18px !important;
+    vertical-align: middle !important;
+}
+
+.font-16px {
+    font-size: 16px !important;
+    line-height: 16px !important;
+    vertical-align: middle !important;
+}
+
+.form-16px {
+    font-size: 16px !important;
+    line-height: 34px !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    vertical-align: middle !important;
+    height: 34px !important;
+}
+
+
+.font-14px {
+    font-size: 14px;
+    line-height: 14px;
+    vertical-align: middle;
+}
+
+
+
+.font-bold {
+    font-weight: bolder !important;
+}
+
+.font-f {
+    font-family: 微軟正黑體 !important;
+}
+
+.kai-hand {
+    cursor: pointer !important;
+    -moz-user-select: none !important;
+}
+
+.kai-table-order {
+    font-size: 14px;
+    line-height: 22px;
+    vertical-align: middle;
+    opacity: 0.3;
+}
+
+.kai-table-order-up-down {
+    font-size: 14px;
+    line-height: 22px;
+    vertical-align: middle;
+    opacity: 0.85;
+}
+
+.kai-hr {
+    border-bottom: 1px solid #C9C9C9;
+    height: 1px;
+}
+
+.kai-topLine {
+    border-top-width: 5px;
+    border-radius: 3px;
+}
+
+.kai-topLine-default {
+    border-top-width: 5px;
+    border-radius: 6px;
+    border-top-color: #777;
+}
+
+.kai-topLine-primary {
+    border-top-width: 5px;
+    border-top-color: #428bca;
+    border-radius: 6px;
+}
+
+.kai-topLine-info {
+    border-top-width: 5px;
+    border-radius: 6px;
+    border-top-color: #5bc0de;
+}
+
+.kai-topLine-warning {
+    border-top-width: 5px;
+    border-radius: 6px;
+    border-top-color: #f0ad4e;
+}
+
+.kai-leftLine-warning {
+    border: solid;
+    border-width: 0;
+    border-left-width: 5px;
+    border-left-color: #f0ad4e;
+}
+
+
+    .kai-leftLine-warning:hover {
+        background-color: #FFFFF2;
+    }
+
+.kai-leftLine-info:hover {
+    background-color: #FFFFF2;
+}
+
+.kai-bgwhite {
+    background-color: white !important;
+}
+
+.kai-bgblue {
+    background-color: #FAF2FF !important;
+}
+
+    .kai-bgblue:hover {
+        background-color: #EDEDED !important;
+    }
+
+.kai-bgwhite:hover {
+    background-color: #EDEDED !important;
+}
+
+
+.kai-leftLine-info {
+    border: solid;
+    border-width: 0;
+    border-left-width: 5px;
+    border-left-color: #5bc0de;
+}
+
+.kai-bgColor-pink {
+    background-color: #F2FFFF;
+}
+
+.kai-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    background: rgba(255,255,255,0.7);
+    border-radius: 6px;
+}
+
+    .kai-overlay > .fa {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -15px;
+        margin-top: -15px;
+        color: #000;
+        font-size: 30px;
+    }
+
+
+.loadersr {
+    position: relative;
+    width: 2.5em;
+    height: 2.5em;
+    transform: rotate(165deg);
+}
+
+    .loadersr:before, .loadersr:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: 0.5em;
+        height: 0.5em;
+        border-radius: 0.25em;
+        transform: translate(-50%, -50%);
+    }
+
+    .loadersr:before {
+        animation: before 2s infinite;
+    }
+
+    .loadersr:after {
+        animation: after 2s infinite;
+    }
+
+@keyframes before {
+    0% {
+        width: 0.5em;
+        box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
+    }
+
+    35% {
+        width: 2.5em;
+        box-shadow: 0 -0.5em rgba(225, 20, 98, 0.75), 0 0.5em rgba(111, 202, 220, 0.75);
+    }
+
+    70% {
+        width: 0.5em;
+        box-shadow: -1em -0.5em rgba(225, 20, 98, 0.75), 1em 0.5em rgba(111, 202, 220, 0.75);
+    }
+
+    100% {
+        box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
+    }
+}
+
+@keyframes after {
+    0% {
+        height: 0.5em;
+        box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
+    }
+
+    35% {
+        height: 2.5em;
+        box-shadow: 0.5em 0 rgba(61, 184, 143, 0.75), -0.5em 0 rgba(233, 169, 32, 0.75);
+    }
+
+    70% {
+        height: 0.5em;
+        box-shadow: 0.5em -1em rgba(61, 184, 143, 0.75), -0.5em 1em rgba(233, 169, 32, 0.75);
+    }
+
+    100% {
+        box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
+    }
+}
+/**
+ * Attempt to center the whole thing!
+ */
+
+.loadersr {
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 1.25em);
+}
+
+.loadword {
+    position: absolute;
+    top: calc(50%);
+    left: calc(50% - 1.50em);
+}

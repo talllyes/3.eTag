@@ -1,0 +1,203 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="x_panel">
+            <div class="col-xs-5" style="margin-top:10px;margin-bottom:0">
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                    <input type="text" id="searchStartDate" style="background-color:white;" ng-model="oldHome.search.startDate" ng-click="oldHome.dateClick('searchStartDate')" class="form-control kai-height38 kai-hand" readonly="readonly">
+                </div>
+            </div>
+            <script>
+                $('#searchStartDate').datetimepicker({
+                    autoclose: true,
+                    todayHighlight: true,
+                    format: 'yyy-mm-dd',
+                    minView: 2,
+                    language: "zh-TW"
+                });
+            </script>
+            <div class="col-xs-5" style="margin-top:10px;margin-bottom:0">
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                    <input type="text" id="searchEndDate" style="background-color:white;" ng-model="oldHome.search.endDate" ng-click="oldHome.dateClick('searchEndDate')" class="form-control kai-height38 kai-hand" readonly="readonly">
+                </div>
+            </div>
+            <script>
+                $('#searchEndDate').datetimepicker({
+                    autoclose: true,
+                    todayHighlight: true,
+                    format: 'yyy-mm-dd',
+                    minView: 2,
+                    language: "zh-TW"
+                });
+            </script>
+            <div class="col-xs-2" style="margin-top:10px;margin-bottom:0">
+                <button class="btn btn-primary" style="width:100%;" ng-click="oldHome.reloadDate()" ng-disabled="!oldHome.excel">搜尋</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    <i class="fa fa-clock-o"></i>　累積流量 -
+                    <span> </span>
+                    <span ng-click="oldHome.chooseZone('1')" class="kai-hand" ng-class="{'kai-blue':oldHome.zoneChooseFlag=='1'}">哈瑪星地區</span>│
+                    <span ng-click="oldHome.chooseZone('2')" class="kai-hand" ng-class="{'kai-blue':oldHome.zoneChooseFlag=='2'}">西子灣地區</span>
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content font-14px" ng-show="oldHome.zoneChooseFlag=='1'">
+                <div class="animated flipInY col-sm-4 col-xs-4 tile_stats_count" style="height:85px;">
+                    <div class="left"></div>
+                    <div class="right">
+                        <span class="count_top"><i class="fa fa-file-text"></i> 累積進入車輛數</span>
+                        <div style="height:85px;font-size:15px;" class="allDayComeleaveNumLoader">
+                            <div class="loadersr" style="top:30px;"></div>
+                        </div>
+                        <div class="count">{{oldHome.ComeNum}}</div>
+                        <span class="count_bottom"><i class="green">一小時內  輛 </i></span>
+                    </div>
+                </div>
+                <div class="animated flipInY  col-sm-4 col-xs-4 tile_stats_count" style="height:85px;">
+                    <div class="left"></div>
+                    <div class="right">
+                        <span class="count_top"><i class="fa fa-clock-o"></i> 累積離開車輛數</span>
+                        <div style="height:85px;font-size:15px;" class="allDayComeleaveNumLoader">
+                            <div class="loadersr" style="top:30px;"></div>
+                        </div>
+                        <div class="count">{{oldHome.LeaveNum}}</div>
+                        <span class="count_bottom"><i class="green">一小時內  輛</i></span>
+                    </div>
+                </div>
+                <div class="animated flipInY  col-sm-4 col-xs-4 tile_stats_count" style="height:85px;">
+                    <div class="left"></div>
+                    <div class="right">
+                        <span class="count_top"><i class="fa fa-warning"></i> 累積滯留車輛數</span>
+                        <div style="height:85px;font-size:15px;" class="allDayComeleaveNumLoader">
+                            <div class="loadersr" style="top:30px;"></div>
+                        </div>
+                        <div class="count red">{{oldHome.StopNum}}</div>
+                        <span class="count_bottom"><i class="green">一小時內  輛</i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="x_content font-14px" ng-show="oldHome.zoneChooseFlag=='2'">
+                <div class="animated flipInY col-sm-4 col-xs-4 tile_stats_count" style="height:85px;">
+                    <div class="left"></div>
+                    <div class="right">
+                        <span class="count_top"><i class="fa fa-file-text"></i> 累積進入車輛數</span>
+                        <div style="height:85px;font-size:15px;" class="allDayComeleaveNumLoader">
+                            <div class="loadersr" style="top:30px;"></div>
+                        </div>
+                        <div class="count">{{oldHome.ComeNum}}</div>
+                        <span class="count_bottom"><i class="green">一小時內  輛 </i></span>
+                    </div>
+                </div>
+                <div class="animated flipInY  col-sm-4 col-xs-4 tile_stats_count" style="height:85px;">
+                    <div class="left"></div>
+                    <div class="right">
+                        <span class="count_top"><i class="fa fa-clock-o"></i> 累積離開車輛數</span>
+                        <div style="height:85px;font-size:15px;" class="allDayComeleaveNumLoader">
+                            <div class="loadersr" style="top:30px;"></div>
+                        </div>
+                        <div class="count">{{oldHome.LeaveNum}}</div>
+                        <span class="count_bottom"><i class="green">一小時內 輛</i></span>
+                    </div>
+                </div>
+                <div class="animated flipInY  col-sm-4 col-xs-4 tile_stats_count" style="height:85px;">
+                    <div class="left"></div>
+                    <div class="right">
+                        <span class="count_top"><i class="fa fa-warning"></i> 累積滯留車輛數</span>
+                        <div style="height:85px;font-size:15px;" class="allDayComeleaveNumLoader">
+                            <div class="loadersr" style="top:30px;"></div>
+                        </div>
+                        <div class="count red">{{oldHome.StopNum}}</div>
+                        <span class="count_bottom"><i class="green">一小時內  輛</i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="x_panel" style="height:167px;">
+            <div class="x_title">
+                <h2>
+                    <i class="fa fa-clock-o"></i>　各eTag - 累積流量
+                    <span>　</span>
+                    <span>{{oldHome.roadName}}</span>
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content font-14px">
+                <div style="height:85px;font-size:20px;" class="eTagCountLoader">
+                    <div class="loadersr" style="top:20px;"></div>
+                </div>
+                <div class="col-xs-3 kai-hand eTagCountOk"
+                     ng-mouseleave="oldHome.eTagMouseleave(eTagCountNum)" ng-mouseover="oldHome.eTagMouseover(eTagCountNum)"
+                     ng-class="{'kai-blue':oldHome.roadName==eTagCountNum.RoadName}"
+                     style="padding-bottom:10px;"
+                     ng-repeat="eTagCountNum in oldHome.eTagCountNum">
+                    {{eTagCountNum.DeviceID}}：{{eTagCountNum.Nums}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    <i class="fa fa-clock-o"></i>　進出入統計圖表
+                    <span>　　</span>
+                    <span ng-click="oldHome.chooseChart('1')" class="kai-hand" ng-class="{'kai-blue':oldHome.chartChooseFlag=='1'}">累積流量</span>│
+                    <span ng-click="oldHome.chooseChart('2')" class="kai-hand" ng-class="{'kai-blue':oldHome.chartChooseFlag=='2'}">分時流量</span>
+                    <span>　　</span>
+                    <span ng-click="oldHome.chooseWeek('0')" ng-show="oldHome.eTagCountChart.HamaxingCount[0][0].has" class="kai-hand" ng-class="{'kai-blue':oldHome.chartWeek=='0'}">
+                        星期日
+                    </span>
+                    <span ng-click="oldHome.chooseWeek('1')" ng-show="oldHome.eTagCountChart.HamaxingCount[1][0].has" class="kai-hand" ng-class="{'kai-blue':oldHome.chartWeek=='1'}">
+                        <span>  </span>星期一
+                    </span>
+                    <span ng-click="oldHome.chooseWeek('2')" ng-show="oldHome.eTagCountChart.HamaxingCount[2][0].has" class="kai-hand" ng-class="{'kai-blue':oldHome.chartWeek=='2'}">
+                        <span>  </span>星期二
+                    </span>
+                    <span ng-click="oldHome.chooseWeek('3')" ng-show="oldHome.eTagCountChart.HamaxingCount[3][0].has" class="kai-hand" ng-class="{'kai-blue':oldHome.chartWeek=='3'}">
+                        <span>  </span>星期三
+                    </span>
+                    <span ng-click="oldHome.chooseWeek('4')" ng-show="oldHome.eTagCountChart.HamaxingCount[4][0].has" class="kai-hand" ng-class="{'kai-blue':oldHome.chartWeek=='4'}">
+                        <span>  </span>星期四
+                    </span>
+                    <span ng-click="oldHome.chooseWeek('5')" ng-show="oldHome.eTagCountChart.HamaxingCount[5][0].has" class="kai-hand" ng-class="{'kai-blue':oldHome.chartWeek=='5'}">
+                        <span>  </span>星期五
+                    </span>
+                    <span ng-click="oldHome.chooseWeek('6')" ng-show="oldHome.eTagCountChart.HamaxingCount[6][0].has" class="kai-hand" ng-class="{'kai-blue':oldHome.chartWeek=='6'}">
+                        <span>  </span>星期六
+                    </span>
+                    <span>　　</span>
+                    <a href="Excel/哈瑪星及西子灣進出累計車流輛.xlsx" class="kai-hand" ng-show="oldHome.excel">
+                        匯出Excel
+                    </a>
+
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div style="height:500px;font-size:30px;" class="eTagCountChartLoader">
+                <div class="loadersr" style="top:150px;"></div>
+                <div class="loadword" style="top:230px;">讀取中...</div>
+            </div>
+            <div id="middleChart" class="eTagCountChartOk" style="width: 100%; height: 500px; margin: 0 auto;display:none;"></div>
+            <div style="width:100%;height:500px;position:absolute;top:-9999px" id="homeMap">
+                <ng-map zoom="{{oldHome.mapZoom}}"
+                        center="{{oldHome.mapCenter}}"
+                        map-type-control="true"
+                        map-type-control-options="{style:'HORIZONTAL_BAR', position:'TOP_RIGHT'}"
+                        style="height: 100%;">
+                    <marker ng-repeat="mapMakers in oldHome.eTagCountNum"
+                            position="{{mapMakers.py}},{{mapMakers.px}}"
+                            id="{{mapMakers.DeviceID}}">
+                    </marker>
+                </ng-map>
+            </div>
+        </div>
+    </div>
+</div>
